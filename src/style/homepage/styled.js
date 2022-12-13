@@ -11,6 +11,9 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
 
   @media (min-width: 768px) {
     background-image: url(${imgBackgroundTablet});
@@ -25,7 +28,6 @@ export const Container = styled.main`
 
 export const TextSection = styled.section`
   width: 327px;
-  padding: 0;
 
   @media (min-width: 768px) {
     width: 450px;
@@ -108,9 +110,8 @@ export const HomeButton = styled.button`
   border: 55px transparent;
   letter-spacing: 2px;
   overflow: visible;
-  margin: 0 0 50px 0;
-  padding: 65px;
   background-color: #ffffff00;
+  margin-top: 50px;
 
   &:hover {
     background: transparent;
