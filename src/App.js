@@ -1,13 +1,18 @@
 import Homepage from "./pages/homepage";
 import { Nav } from "./pages/navigation";
 import GlobalStyle from "./style/globalStyle";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Nav/>
-      <GlobalStyle />
-      <Homepage />
+      <Router>
+        <Nav/>
+        <GlobalStyle />
+          <Routes>
+           <Route exact path='/space-tourism/' element={<Homepage />}></Route>
+          </Routes>
+      </Router>   
     </>
   );
 }
