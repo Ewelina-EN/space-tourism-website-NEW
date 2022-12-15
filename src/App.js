@@ -10,7 +10,7 @@ function App() {
         <Nav/>
         <GlobalStyle />
           <Routes>
-           <Route exact path='/space-tourism/' element={<Homepage />}></Route>
+           <Route exact path='/space-tourism-website-react-NEW' element={<Homepage />}></Route>
           </Routes>
       </Router>   
     </>
