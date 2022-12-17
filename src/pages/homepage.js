@@ -8,7 +8,7 @@ import {
   BtnSpan,
 } from "../style/homepage/styled";
 
-export default function Homepage() {
+export const Homepage = () => {
   return (
     <>
       <Container>
