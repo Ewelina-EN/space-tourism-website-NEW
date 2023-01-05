@@ -7,7 +7,7 @@ export const Navigation = styled.div`
     position: fixed;
     width: 100%;
 
-    @media (min-width: 1028px) {
+    @media (min-width: 1280px) {
         align-items: center;
     }
 `;
@@ -25,14 +25,20 @@ export const ImgLogo = styled.img`
 export const Menu = styled.nav`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-evenly;
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(40.7742px);
-
-      @media (min-width: 768px) {
-        flex-direction: row;
+    transform: ${({ open }) => (open ? "translateX(0%);" : "translateX(100%);")};
+    
+     @media (min-width: 768px) {
+        display: flex;
     }
+
+    @media (min-width: 1280px) {
+        display: flex;
+    }
+
 `;
 
 export const MenuList = styled.ul`
@@ -49,7 +55,7 @@ export const MenuList = styled.ul`
         width: 500px;
     }
 
-    @media (min-width: 1028px) {
+    @media (min-width: 1208px) {
         justify-content: space-evenly;
         width: 830px;
     }
@@ -70,5 +76,30 @@ export const Span = styled.span`
 
      @media (min-width: 768px) {
         padding: 0;
+    }
+`;
+
+export const Hamburger = styled.img`  
+    width: 30px;
+    cursor: pointer;
+    margin: 24px 24px 0 0;
+    position: absolute;
+    right: 0;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+`;
+
+export const CloseIcon = styled.img`
+    width: 30px;
+    cursor: pointer;
+    margin: 24px 24px 0 0;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+    @media (min-width: 1280px) {
+        display: none;
     }
 `;
