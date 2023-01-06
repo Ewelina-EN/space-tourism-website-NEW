@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DDesktop from "../../assets/destination/background-destination-desktop.jpg";
 import DTablet from "../../assets/destination/background-destination-tablet.jpg";
- import DMobile from "../../assets/destination/background-destination-mobile.jpg";
+import { NavLink } from "react-router-dom";
 
 export const Container = styled.main`
     background-image: url("${DMobile}");
@@ -94,6 +94,64 @@ export const Tab = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
+`;
+
+export const DestinationNav = styled.nav`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+    margin-bottom: 20px;
+    font-family: 'Barlow Condensed';
+    text-transform: uppercase;
+
+     @media (min-width: 768px) {
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+    }
+
+    @media (min-width: 1280px){
+        justify-content: flex-start;
+        font-family: 'Barlow Condensed';
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+`;
+
+export const MenuList = styled.ul`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 0 0 15px 0;
+    width: 237px;
+    list-style: none;
+    border-bottom: 2px solid transparent;
+
+     @media(min-width: 768px) {
+        justify-content: space-around;
+    }
+
+     @media(min-width: 1280px) {
+        justify-content: space-between;
+    }
+`;
+
+export const Link = styled(NavLink)`
+    color: #d0d6f9;
+    text-decoration: none;
+
+     &.active{
+        border-bottom: 2px solid white;
+        color: white;
+    }
 `;
 
 export const Planet = styled.section`

@@ -1,6 +1,26 @@
-import { Container, Header, Span, Section, Image, Tab, Planet, Title, Info, Data, DataInfo, DataP, DataSpan } from "../style/destination/styled";
-import moon from "../assets/destination/image-moon.png";
+import {
+    Container,
+    Header,
+    Span,
+    Section,
+    Image,
+    Tab,
+    Planet,
+    Title,
+    Info,
+    Data,
+    DataInfo,
+    DataP,
+    DataSpan,
+    DestinationNav,
+    MenuList,
+    Link
+} from "../style/destination/styled";
 import { useState } from "react";
+import moon from "../assets/destination/image-moon.png";
+import mars from "../assets/destination/image-mars.png";
+import europa from "../assets/destination/image-europa.png";
+import titan from "../assets/destination/image-titan.png";
 
 // TODO: przeczytaj o require
 const data = require("../data.json");
@@ -10,69 +30,58 @@ export const Destination = () => {
     const [destinationId, setDestinationId] = useState(0);
 
     // Data of Destination from data
-    const {name, images, description, distance, travel} = data.destinations[destinationId];
+    const { name, description, distance, travel } = data.destinations[destinationId];
 
-     const change = (e, id) => {
+    const change = (e, id) => {
         e.preventDefault();
         setDestinationId(id);
-    }
+    };
+    
+    const image = () => {
+        if (name === "Moon") {
+            return moon;
+        } else if (name === "Mars") {
+            return mars;
+        } else if (name === "Europa") {
+            return europa;
+        } else {
+            return titan;
+        }
+    };
 
     return (
-        <>
-             <div className="destination-names">
-                        <a href="#" onClick={(e) => change(e,0)}>Moon</a>
-                        <a href="#" onClick={(e) => change(e,1)}>Mars</a>
-                        <a href="#" onClick={(e) => change(e,2)} >Europa</a>
-                        <a href="#" onClick={(e) => change(e,3)} >Titan</a>
-            </div>
-            <Container>
-                <Header><Span>01</Span>Pick your destination</Header>
-                <Section>
-                    <Image src={moon} alt="moon" />
-                     <Tab>
-            <Planet>
-                            <Title>{ name}</Title>
-                <Info>{description}</Info>
-            </Planet>
-            <Data>
-                <DataInfo>
-                    <DataP className="">Avg. distance</DataP>
-                    <DataSpan>{distance}</DataSpan>
-                </DataInfo>
-                <DataInfo>
-                    <DataP className="">Est. travel time</DataP>
-                    <DataSpan className="">{travel}</DataSpan>
-                </DataInfo>
-            </Data>
-        </Tab>
-            </Section>
-        </Container>
-        </>
-        // <>
-        //     <Container>
-        //         <Header><Span>01</Span>Pick your destination</Header>
-        //         <Section>
-        //             <Image src={moon} alt="moon" />
-        //              <Tab>
-        //     <Planet>
-        //         <Title>Moon</Title>
-        //         <Info>See our planet as you’ve never seen it before. A perfect relaxing trip away to
-        //             help regain perspective and come back refreshed. While you’re there, take in some history by visiting the
-        //             Luna 2 and Apollo 11 landing sites.</Info>
-        //     </Planet>
-        //     <Data>
-        //         <DataInfo>
-        //             <DataP className="">Avg. distance</DataP>
-        //             <DataSpan>384,400 km</DataSpan>
-        //         </DataInfo>
-        //         <DataInfo>
-        //             <DataP className="">Est. travel time</DataP>
-        //             <DataSpan className="">3 days</DataSpan>
-        //         </DataInfo>
-        //     </Data>
-        // </Tab>
-        //     </Section>
-        // </Container>
-        // </>
-    )
-}
+            <>
+                <Container>
+                    <Header><Span>01</Span>Pick your destination</Header>
+                    <Section>
+                        <Image src={image()} name={name} alt="photo of the planet" />
+                        <Tab>
+                            <DestinationNav>
+                                <MenuList>
+                                <Link to="/"
+                                    onClick={(e) => change(e, 0)}>Moon</Link>
+                                    <Link to="/" onClick={(e) => change(e, 1)}>Mars</Link>
+                                    <Link to="/" onClick={(e) => change(e, 2)}>Europe</Link>
+                                    <Link to="/" onClick={(e) => change(e, 3)}>Titan</Link>
+                                </MenuList>
+                            </DestinationNav>
+                            <Planet>
+                                <Title>{name}</Title>
+                                <Info>{description}</Info>
+                            </Planet>
+                            <Data>
+                                <DataInfo>
+                                    <DataP className="">Avg. distance</DataP>
+                                    <DataSpan>{distance}</DataSpan>
+                                </DataInfo>
+                                <DataInfo>
+                                    <DataP className="">Est. travel time</DataP>
+                                    <DataSpan className="">{travel}</DataSpan>
+                                </DataInfo>
+                            </Data>
+                        </Tab>
+                    </Section>
+                </Container>
+            </>
+        )
+};
